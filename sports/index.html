@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports — The Tarbell News</title>
+  <meta name="description" content="Family League, weekend games, and household championships — The Tarbell News Sports desk.">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/espn.css">
+</head>
+<body class="theme-espn" data-page="sports">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="espn-topbar">
+      <div class="container espn-topbar__inner">
+        <span><a href="../index.html">← The Tarbell News</a></span>
+        <span>Sports desk · America/Lima</span>
+      </div>
+    </div>
+
+    <div class="espn-masthead">
+      <div class="container espn-masthead__inner">
+        <a class="espn-logo" href="index.html">
+          Tarbell Sports
+          <span class="espn-logo__sub">Family League · Weekend Games · Recap</span>
+        </a>
+        <button class="espn-nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="espn-nav">Menu</button>
+        <nav class="espn-nav" id="espn-nav" data-nav-list aria-label="Sports sections">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="#family">Family League</a>
+          <a href="#weekend">Weekend Games</a>
+          <a href="#recap">Recap</a>
+          <a href="../index.html">Main News</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="espn-scoreboard" aria-label="Sample scoreboard">
+      <div class="container">
+        <div class="espn-scoreboard__track">
+          <div class="espn-score">
+            <div class="espn-score__league">Family League</div>
+            <div class="espn-score__row"><span>Cousins Utd</span><span>21</span></div>
+            <div class="espn-score__row espn-score__row--muted"><span>Team Elders</span><span>20</span></div>
+            <div class="espn-score__status espn-score__status--final">Final / Turkey Bowl</div>
+          </div>
+          <div class="espn-score">
+            <div class="espn-score__league">Weekend Games</div>
+            <div class="espn-score__row"><span>Torres Run</span><span>1</span></div>
+            <div class="espn-score__row espn-score__row--muted"><span>Park Court</span><span>0</span></div>
+            <div class="espn-score__status espn-score__status--final">Final / 3OT</div>
+          </div>
+          <div class="espn-score">
+            <div class="espn-score__league">Board Night</div>
+            <div class="espn-score__row"><span>Park (Catan)</span><span>W</span></div>
+            <div class="espn-score__row espn-score__row--muted"><span>Monopoly Era</span><span>L</span></div>
+            <div class="espn-score__status espn-score__status--final">Final</div>
+          </div>
+          <div class="espn-score">
+            <div class="espn-score__league">Chore Olympics</div>
+            <div class="espn-score__row"><span>J. Kim</span><span>GOLD</span></div>
+            <div class="espn-score__row espn-score__row--muted"><span>Casey</span><span>SILVER</span></div>
+            <div class="espn-score__status">All-around</div>
+          </div>
+          <div class="espn-score">
+            <div class="espn-score__league">Pickup Hoops</div>
+            <div class="espn-score__row"><span>Next rematch</span><span>—</span></div>
+            <div class="espn-score__row espn-score__row--muted"><span>Sat 10am</span><span>—</span></div>
+            <div class="espn-score__status">Scheduled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="espn-main">
+    <div class="container">
+      <p id="load-error" hidden style="color:#f88"></p>
+
+      <div class="espn-chips" role="tablist" aria-label="Filter by category">
+        <a href="#" class="espn-chip is-active" data-chip="all">All</a>
+        <a href="#family" class="espn-chip" data-chip="Family League" id="family">Family League</a>
+        <a href="#weekend" class="espn-chip" data-chip="Weekend Games" id="weekend">Weekend Games</a>
+        <a href="#recap" class="espn-chip" data-chip="Recap" id="recap">Recap</a>
+      </div>
+
+      <p class="espn-section-label" style="margin-top:1.25rem">Top headlines</p>
+      <section class="espn-featured" aria-label="Featured sports stories">
+        <article class="espn-feature-card espn-feature-card--primary" id="espn-primary">
+          <div class="espn-feature-card__body"><p>Loading…</p></div>
+        </article>
+        <div class="espn-stack" id="espn-stack"></div>
+      </section>
+
+      <p class="espn-section-label">More from the desk</p>
+      <section class="espn-grid" id="espn-grid" aria-label="All sports stories"></section>
+    </div>
+  </main>
+
+  <footer class="site-footer espn-footer">
+    <div class="container site-footer__inner">
+      <p>© 2026 The Tarbell News Sports. Household athletics coverage. Not affiliated with any sports network.</p>
+      <p><a href="../index.html">Main newsroom</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

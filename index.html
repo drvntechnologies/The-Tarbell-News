@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Tarbell News — Life Events as Breaking News</title>
+  <meta name="description" content="The Tarbell News covers life events in the format of news articles — from kitchen diplomacy to weekend sports.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/cnn.css">
+</head>
+<body class="theme-cnn" data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="cnn-topbar">
+      <div class="container cnn-topbar__inner">
+        <span class="cnn-topbar__tag">Local edition · America/Lima</span>
+        <span class="cnn-topbar__live" aria-hidden="true">
+          <span class="cnn-topbar__live-dot"></span>
+          Live coverage
+        </span>
+      </div>
+    </div>
+
+    <div class="cnn-masthead">
+      <div class="container cnn-masthead__inner">
+        <a class="cnn-logo" href="index.html">The <span>Tarbell</span> News</a>
+        <div class="cnn-masthead__meta">
+          <div data-live-date>Thursday, November 5, 2026</div>
+          <div>Life events · Reported as news</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="cnn-nav" aria-label="Primary">
+      <div class="container cnn-nav__inner">
+        <button class="cnn-nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav">Menu</button>
+        <ul class="cnn-nav__list" id="primary-nav" data-nav-list>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="index.html#world">World of Us</a></li>
+          <li><a href="index.html#politics">Politics of Life</a></li>
+          <li><a href="index.html#business">Business of Living</a></li>
+          <li><a href="sports/index.html">Sports</a></li>
+          <li><a href="index.html#opinion">Opinion</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="cnn-breaking" role="status">
+    <div class="container cnn-breaking__inner">
+      <span class="cnn-breaking__label">Breaking</span>
+      <p class="cnn-breaking__text" id="cnn-breaking-text">Loading latest…</p>
+    </div>
+  </div>
+
+  <main id="main" class="cnn-main">
+    <div class="container">
+      <p id="load-error" class="cnn-byline" hidden></p>
+      <div class="cnn-grid">
+        <div>
+          <section class="cnn-hero" id="cnn-hero" aria-label="Top story">
+            <p class="cnn-byline">Loading stories…</p>
+          </section>
+          <section class="cnn-secondary" id="cnn-secondary" aria-label="Secondary stories"></section>
+        </div>
+        <aside aria-label="Latest stories">
+          <h2 class="cnn-sidebar-title">Latest</h2>
+          <div class="cnn-latest" id="cnn-latest"></div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© 2026 The Tarbell News. Independent life-events coverage. Not affiliated with any cable news network.</p>
+      <p><a href="sports/index.html">Sports desk</a> · <a href="README.md">About / how to add stories</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+[
+  {
+    "id": "morning-coffee-summit",
+    "title": "Historic Morning Coffee Summit Ends Years of Kitchen Cold War",
+    "section": "World of Us",
+    "dek": "After months of silent mornings, two housemates brokered a landmark agreement over French press and oat milk.",
+    "byline": "Jordan Hale",
+    "date": "2026-11-03T08:15:00-05:00",
+    "body": [
+      "In what diplomats are already calling a breakthrough, roommates Alex and Sam announced a comprehensive coffee-sharing accord early Monday, ending a weeks-long standoff that had left the kitchen tense and the French press unused.",
+      "The agreement, inked on a sticky note affixed to the fridge, establishes rotating brew duties, a shared oat-milk budget, and a strict no-silent-treatment clause before 9 a.m.",
+      "\"We almost lost everything,\" said Alex, speaking from the newly demilitarized zone near the toaster. \"But the smell of dark roast brought us back to the table.\"",
+      "Neighbors reported hearing laughter from the apartment for the first time in nearly a month. Analysts say the deal could reshape breakfast diplomacy across the hallway."
+    ],
+    "image": "gradient-red-coffee",
+    "featured": true,
+    "sports": false
+  },
+  {
+    "id": "laundry-bill-passes",
+    "title": "Senate of the Household Passes Sweeping Laundry Reform Bill",
+    "section": "Politics of Life",
+    "dek": "A bipartisan coalition of roommates and visiting cousins approved new rules for the shared washer after a contentious floor debate.",
+    "byline": "Priya Okonkwo",
+    "date": "2026-11-02T14:30:00-05:00",
+    "body": [
+      "In a narrow 3–2 vote, the Household Senate approved the Clean Clothes Accountability Act, mandating that wet laundry cannot remain in the machine for more than 45 minutes.",
+      "Supporters hailed the bill as overdue justice for those who have waited barefoot outside the laundry closet. Opponents warned of overreach and \"sock surveillance.\"",
+      "The legislation also creates a detergent stipend and a whistleblower hotline—currently a group chat named \"Washer Watch.\"",
+      "Implementation begins this weekend. Enforcement will be handled by whoever finds the wet load first."
+    ],
+    "image": "gradient-navy-laundry",
+    "featured": true,
+    "sports": false
+  },
+  {
+    "id": "grocery-budget-crisis",
+    "title": "Markets Plunge as Household Faces Unprecedented Grocery Budget Crisis",
+    "section": "Business of Living",
+    "dek": "Analysts scramble after avocado prices and impulse snack buys push the weekly food fund into the red.",
+    "byline": "Marcus Chen",
+    "date": "2026-11-01T11:00:00-05:00",
+    "body": [
+      "The Household Reserve Fund closed Friday down 27 percent after a midweek Costco run and an emergency ice-cream restock following a tough workday.",
+      "Chief financial officer (and roommate who does the spreadsheet) issued a rare public statement: \"We remain solvent, but discretionary guacamole is under review.\"",
+      "Emergency measures include a three-day rice-and-beans austerity plan and a temporary ban on \"just browsing\" the snack aisle.",
+      "Markets are expected to stabilize once payday lands. Investors—namely parents who Venmo for birthdays—are watching closely."
+    ],
+    "image": "gradient-green-market",
+    "featured": false,
+    "sports": false
+  },
+  {
+    "id": "opinion-sunday-scaries",
+    "title": "Opinion: The Sunday Scaries Are a Manufactured Crisis—and We Keep Buying In",
+    "section": "Opinion",
+    "dek": "Every week we pretend Monday is a surprise. It is not. Here is how to stop the spiral.",
+    "byline": "Riley Santos",
+    "date": "2026-10-31T17:45:00-05:00",
+    "body": [
+      "There is nothing natural about the dread that settles in around 4 p.m. on a Sunday. It is a ritual we rehearse: open laptop, glance at calendar, spiral.",
+      "We treat the Sunday Scaries like weather—inevitable, impersonal. They are neither. They are a story we tell ourselves about unfinished work and unearned rest.",
+      "A modest proposal: name one concrete thing you will do Monday morning, close the laptop, and go outside. The crisis shrinks when you stop rehearsing it.",
+      "Monday will arrive either way. You might as well meet it with a plan instead of a panic."
+    ],
+    "image": "gradient-purple-opinion",
+    "featured": false,
+    "sports": false
+  },
+  {
+    "id": "power-outage-blackout",
+    "title": "Breaking: Neighborhood Blackout Forces Candlelit Diplomacy Across Three Apartments",
+    "section": "World of Us",
+    "dek": "When the lights went out, strangers became allies over shared chargers and leftover pizza.",
+    "byline": "Sam Rivera",
+    "date": "2026-10-28T21:10:00-05:00",
+    "body": [
+      "A transformer failure plunged three buildings into darkness Tuesday evening, triggering an impromptu summit of neighbors who had previously only nodded in the stairwell.",
+      "Within the hour, a candlelit commons formed in the lobby: phones charging from a single working outlet, pizza boxes open for all, and a playlist queued on someone's laptop.",
+      "\"We learned more about each other in two hours than in two years,\" said a resident of 3B. \"Also, someone finally admitted who keeps taking the shared umbrellas.\"",
+      "Power returned at 11:47 p.m. The pizza diplomacy, residents say, may become a monthly tradition—lights optional."
+    ],
+    "image": "gradient-amber-blackout",
+    "featured": true,
+    "sports": false
+  },
+  {
+    "id": "plant-rescue-mission",
+    "title": "Exclusive: Covert Plant Rescue Mission Saves Fiddle-Leaf Fig From Certain Doom",
+    "section": "World of Us",
+    "dek": "Operatives moved under cover of dusk after a roommate left for vacation without watering instructions.",
+    "byline": "Jordan Hale",
+    "date": "2026-10-25T09:00:00-05:00",
+    "body": [
+      "Intelligence gathered from a wilting Instagram story confirmed the worst: the household fiddle-leaf fig had gone unwatered for eleven days.",
+      "A rapid-response team of two friends and one borrowed watering can executed a dusk extraction, relocating the plant to a sunnier windowsill and administering emergency hydration.",
+      "\"It was touch and go,\" said the lead operative. \"But the new growth says we got there in time.\"",
+      "The absentee roommate has been briefed. A plant-care protocol is now pinned to the fridge next to the coffee accord."
+    ],
+    "image": "gradient-teal-plant",
+    "featured": false,
+    "sports": false
+  },
+  {
+    "id": "family-league-thanksgiving-turkey-bowl",
+    "title": "Family League: Underdog Cousins Stun Favorites in Thanksgiving Turkey Bowl",
+    "section": "Sports",
+    "dek": "A last-second lateral and a muddy end zone sealed the upset of the decade in backyard football.",
+    "byline": "Chris Delgado",
+    "date": "2026-11-04T16:20:00-05:00",
+    "body": [
+      "In front of a packed audience of folding chairs and one confused dog, the Cousins United squad defeated defending champs Team Elders 21–20 on a trick play that will be debated until next Thanksgiving.",
+      "Quarterback Maya \"No Look\" Patel completed a behind-the-back lateral to her brother, who dove across the Cool Whip–stained goal line as time expired.",
+      "\"Film study was just watching last year's group chat arguments,\" Patel said. \"We knew they would bite on the fake handoff to Uncle Ray.\"",
+      "MVP honors went to the family golden retriever, who intercepted two passes and refused to return either football."
+    ],
+    "image": "gradient-espn-turkey",
+    "featured": true,
+    "sports": true
+  },
+  {
+    "id": "weekend-games-pickup-basketball",
+    "title": "Weekend Games: Pickup Basketball Crown Changes Hands After Triple-OT Thriller",
+    "section": "Sports",
+    "dek": "The park court saw its longest game of the season as dusk forced a sudden-death finish.",
+    "byline": "Aisha Brooks",
+    "date": "2026-11-01T19:05:00-05:00",
+    "body": [
+      "What started as a friendly Saturday run became legend when neither side would yield through regulation and two overtimes.",
+      "With light fading and parents calling kids home, captains agreed to one final possession. Rookie guard Eli Torres drained a contested floater at the buzzer.",
+      "\"My shoes are destroyed and I have never been happier,\" Torres said while icing both ankles on a cooler lid.",
+      "Next week's rematch is already scheduled. Trash talk has migrated from the court to three separate group chats."
+    ],
+    "image": "gradient-espn-hoops",
+    "featured": true,
+    "sports": true
+  },
+  {
+    "id": "recap-board-game-championship",
+    "title": "Recap: Board Game Night Ends in Historic Upset—Monopoly Crown Dethroned",
+    "section": "Sports",
+    "dek": "After three hours and one near-walkout, a dark-horse Catan player took the weekend hardware.",
+    "byline": "Chris Delgado",
+    "date": "2026-10-26T22:40:00-05:00",
+    "body": [
+      "The annual Game Night Championship, long dominated by Monopoly specialists, saw a seismic shift when wheat-and-ore strategist Lena Park closed out a Catan victory at 10:38 p.m.",
+      "Park's longest road cut through three rival settlements and left the former champ stranded on Baltic Avenue energy.",
+      "\"I studied the robber meta all week,\" Park admitted. \"Also I brought better snacks. That helped.\"",
+      "Organizers confirmed next season will include a formal replay review for disputed dice rolls—and a hard 11 p.m. curfew."
+    ],
+    "image": "gradient-espn-board",
+    "featured": false,
+    "sports": true
+  },
+  {
+    "id": "family-league-chore-olympics",
+    "title": "Family League: Chore Olympics Crown New All-Around Champion",
+    "section": "Sports",
+    "dek": "Vacuum sprint, dish stack, and trash-bag freestyle delivered drama worthy of a highlight reel.",
+    "byline": "Aisha Brooks",
+    "date": "2026-10-19T13:15:00-05:00",
+    "body": [
+      "The inaugural Chore Olympics crowned teenager Jordan Kim after a dominant showing across five household events.",
+      "Kim's vacuum sprint time of 47 seconds set a course record, and a flawless dish-stack routine earned a perfect 10 from the panel of parents.",
+      "Silver medalist Casey argued the trash-bag freestyle should have been judged on style, not just capacity. Officials declined a recount.",
+      "Prize: one week of dish immunity and naming rights to the cleaning closet for a month."
+    ],
+    "image": "gradient-espn-chores",
+    "featured": false,
+    "sports": true
+  }
+]

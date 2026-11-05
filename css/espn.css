@@ -1,0 +1,448 @@
+/* The Tarbell News Sports — ESPN-evoking hub (no logos/marks) */
+:root {
+  --espn-black: #000;
+  --espn-dark: #1a1a1a;
+  --espn-panel: #221f1f;
+  --espn-red: #a50000;
+  --espn-red-bright: #d00;
+  --espn-gray: #9e9e9e;
+  --espn-border: #333;
+  --espn-text: #eee;
+}
+
+body.theme-espn {
+  background: var(--espn-black);
+  color: var(--espn-text);
+}
+
+/* Top bar */
+.espn-topbar {
+  background: var(--espn-black);
+  border-bottom: 1px solid var(--espn-border);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.espn-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 1.85rem;
+  color: var(--espn-gray);
+}
+
+.espn-topbar a {
+  color: var(--espn-gray);
+}
+
+.espn-topbar a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Masthead */
+.espn-masthead {
+  background: var(--espn-dark);
+  border-bottom: 3px solid var(--espn-red);
+}
+
+.espn-masthead__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  gap: 1rem;
+}
+
+.espn-logo {
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  line-height: 1.1;
+}
+
+.espn-logo:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.espn-logo__sub {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--espn-red-bright);
+  margin-top: 0.15rem;
+}
+
+.espn-nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid #555;
+  color: #fff;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.espn-nav {
+  display: flex;
+  gap: 0.15rem;
+  flex-wrap: wrap;
+}
+
+.espn-nav a {
+  color: #ccc;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.4rem 0.65rem;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.espn-nav a:hover,
+.espn-nav a[aria-current="page"] {
+  background: var(--espn-red);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Scoreboard strip */
+.espn-scoreboard {
+  background: var(--espn-panel);
+  border-bottom: 1px solid var(--espn-border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.espn-scoreboard__track {
+  display: flex;
+  gap: 0;
+  min-width: max-content;
+}
+
+.espn-score {
+  flex: 0 0 auto;
+  min-width: 160px;
+  padding: 0.65rem 1rem;
+  border-right: 1px solid var(--espn-border);
+  font-size: 0.75rem;
+}
+
+.espn-score__league {
+  color: var(--espn-gray);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+
+.espn-score__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.45;
+}
+
+.espn-score__row--muted {
+  color: var(--espn-gray);
+  font-weight: 600;
+}
+
+.espn-score__status {
+  margin-top: 0.25rem;
+  font-size: 0.65rem;
+  color: #6fcf97;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.espn-score__status--final {
+  color: var(--espn-gray);
+}
+
+/* Chips */
+.espn-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 0 0.25rem;
+}
+
+.espn-chip {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid #555;
+  border-radius: 999px;
+  color: #ccc;
+  background: transparent;
+  text-decoration: none;
+}
+
+.espn-chip:hover,
+.espn-chip.is-active {
+  background: var(--espn-red);
+  border-color: var(--espn-red);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Main sports layout */
+.espn-main {
+  padding: 1.25rem 0 2.5rem;
+}
+
+.espn-section-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--espn-red-bright);
+  margin-bottom: 0.75rem;
+}
+
+.espn-featured {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 800px) {
+  .espn-featured {
+    grid-template-columns: 1fr;
+  }
+}
+
+.espn-feature-card {
+  background: var(--espn-dark);
+  border: 1px solid var(--espn-border);
+  overflow: hidden;
+}
+
+.espn-feature-card--primary .espn-feature-card__body {
+  padding: 1.25rem;
+}
+
+.espn-feature-card__body {
+  padding: 1rem;
+}
+
+.espn-feature-card__title {
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0.4rem 0 0.5rem;
+  color: #fff;
+}
+
+.espn-feature-card__title a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--espn-red);
+}
+
+.espn-feature-card__dek {
+  color: #bbb;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.espn-feature-card__meta {
+  font-size: 0.75rem;
+  color: var(--espn-gray);
+}
+
+.espn-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.espn-mini {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0.75rem;
+  background: var(--espn-dark);
+  border: 1px solid var(--espn-border);
+  padding: 0.65rem;
+}
+
+.espn-mini__title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.espn-mini__title a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--espn-red);
+}
+
+.espn-mini__meta {
+  font-size: 0.7rem;
+  color: var(--espn-gray);
+  margin-top: 0.35rem;
+}
+
+/* Story grid */
+.espn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .espn-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .espn-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .espn-mini {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .espn-nav-toggle {
+    display: block;
+  }
+
+  .espn-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .espn-nav.is-open {
+    display: flex;
+  }
+
+  .espn-masthead__inner {
+    flex-wrap: wrap;
+  }
+}
+
+.espn-card {
+  background: var(--espn-dark);
+  border: 1px solid var(--espn-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.espn-card__body {
+  padding: 0.85rem;
+  flex: 1;
+}
+
+.espn-card__kicker {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--espn-red-bright);
+}
+
+.espn-card__title {
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0.35rem 0;
+  color: #fff;
+}
+
+.espn-card__title a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--espn-red);
+}
+
+.espn-card__meta {
+  font-size: 0.7rem;
+  color: var(--espn-gray);
+}
+
+/* Sports article (dark) */
+.espn-article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+}
+
+.espn-article__title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0.5rem 0 0.75rem;
+  color: #fff;
+}
+
+.espn-article__dek {
+  font-size: 1.1rem;
+  color: #bbb;
+  margin-bottom: 1rem;
+}
+
+.espn-article__meta {
+  font-size: 0.85rem;
+  color: var(--espn-gray);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--espn-border);
+}
+
+.espn-article__body {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #ddd;
+}
+
+.espn-article__body p {
+  margin-bottom: 1.25rem;
+}
+
+.espn-article__back {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--espn-red-bright);
+}
+
+.espn-footer {
+  border-top: 1px solid var(--espn-border);
+  color: var(--espn-gray);
+}
+
+.espn-footer a {
+  color: #aaa;
+}
