@@ -62,22 +62,17 @@
     opts = opts || {};
     const cls = ["story-media"];
     if (opts.modifier) cls.push("story-media--" + opts.modifier);
-    const g = gradientClass(article.image);
-    const caption = opts.caption !== false ? (article.section || "") : "";
-    return (
-      '<div class="' +
-      cls.join(" ") +
-      '" role="img" aria-label="' +
-      escapeAttr(article.title) +
-      '">' +
-      '<div class="story-media__gradient ' +
-      g +
-      '"></div>' +
-      (caption
-        ? '<div class="story-media__caption">' + escapeHtml(caption) + "</div>"
-        : "") +
-      "</div>"
-    );
+    const image = article.image || "";
+    const isImage = /^(images\/|https?:\/\/|\/)/i.test(image);
+    const nested = /\/(sports|articles)(\/|$)/.test(window.location.pathname);
+    const src = image.startsWith("images/") && nested ? "../" + image : image;
+    const caption = opts.caption !== false ? (article.imageCaption || article.section || "") : "";
+    const media = isImage
+      ? '<img class="story-media__img" src="' + escapeAttr(src) + '" alt="' + escapeAttr(article.imageCaption || article.title) + '">'
+      : '<div class="story-media__gradient ' + gradientClass(image) + '"></div>';
+    return '<div class="' + cls.join(" ") + '"' +
+      (isImage ? '' : ' role="img" aria-label="' + escapeAttr(article.title) + '"') + '>' +
+      media + (caption ? '<div class="story-media__caption">' + escapeHtml(caption) + '</div>' : '') + '</div>';
   }
 
   function escapeHtml(str) {

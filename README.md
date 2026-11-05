@@ -73,3 +73,7 @@ the-tarbell-news/
 ## License / credit
 
 Personal project for Cameron. Design patterns are generic news/sports UI conventions, not official brand assets.
+
+### Article photos
+
+Store photos in `images/` and set an article’s `image` to `images/filename.jpg` with an `imageCaption`. Home, sports, and article views resolve local image paths automatically; HTTP(S) and root-relative image URLs are also supported. Existing gradient image keys still work. Static article pages use `../images/filename.jpg`.
