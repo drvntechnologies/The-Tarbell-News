@@ -142,7 +142,13 @@
       return a.featured;
     });
     const hero = featured[0] || life[0];
-    if (!hero) return;
+    ["cnn-hero", "cnn-secondary", "cnn-latest"].forEach(function (id) {
+      const el = document.getElementById(id); if (el) el.innerHTML = "";
+    });
+    const empty = document.getElementById("section-empty");
+    if (empty) empty.hidden = !!hero;
+    const breaking = document.getElementById("cnn-breaking-text");
+    if (!hero) { if (breaking) breaking.textContent = "Choose a section to browse the latest coverage."; return; }
 
     const secondary = life
       .filter(function (a) {
@@ -479,6 +485,7 @@
             return "<p>" + escapeHtml(p) + "</p>" + (index === 1 ? boxScoreBlock(article, false) : "");
           })
           .join("") +
+        externalSourceBlock(article) +
         "</div>" +
         '<a class="espn-article__back" href="' +
         backHref +
@@ -511,6 +518,7 @@
             return "<p>" + escapeHtml(p) + "</p>";
           })
           .join("") +
+        externalSourceBlock(article) +
         "</div>" +
         '<a class="cnn-article__back" href="' +
         backHref +
@@ -518,6 +526,28 @@
         backLabel +
         "</a>";
     }
+  }
+
+  function initNewsSections(articles) {
+    const categories = ["General", "Politics", "Business", "World", "Opinion"];
+    function update() {
+      const hash = window.location.hash.slice(1).toLowerCase();
+      const category = categories.find(function (value) { return value.toLowerCase() === hash; });
+      const heading = document.getElementById("section-heading");
+      if (heading) heading.textContent = category || "Top Stories";
+      document.querySelectorAll(".cnn-nav__list a").forEach(function (link) {
+        const current = category ? link.hash === "#" + category.toLowerCase() : !link.hash && link.textContent === "Top Stories";
+        if (current) link.setAttribute("aria-current", "page"); else link.removeAttribute("aria-current");
+      });
+      renderHomepage(category ? articles.filter(function (a) { return a.section === category; }) : articles);
+    }
+    window.addEventListener("hashchange", update); update();
+  }
+
+  function externalSourceBlock(article) {
+    if (!article.externalNews || !/^https?:\/\//i.test(article.sourceUrl || "")) return "";
+    return '<p class="external-source"><strong>Original source: ' + escapeHtml(article.source) + '</strong></p>' +
+      '<p><a href="' + escapeAttr(article.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Read the original report ↗</a></p>';
   }
 
   async function boot() {
@@ -529,7 +559,7 @@
 
     try {
       const articles = await loadArticles();
-      if (page === "home") renderHomepage(articles);
+      if (page === "home") initNewsSections(articles);
       else if (page === "sports") renderSports(articles);
       else if (page === "article") renderArticlePage(articles);
     } catch (err) {

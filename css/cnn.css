@@ -428,3 +428,6 @@ body.theme-cnn {
     display: none;
   }
 }
+
+/* Public category navigation and section filters. */
+.news-section-heading{font-size:1.1rem;text-transform:uppercase;letter-spacing:.08em;border-bottom:3px solid #cc0000;padding-bottom:12px;margin:0 0 24px}

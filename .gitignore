@@ -3,3 +3,10 @@ node_modules/
 .idea/
 .vscode/
 *.log
+
+# Local feed cache and atomic publication staging
+content/feeds.json
+content/*.tmp
+content/.publish-lock/
+articles/.stage-*/
+__pycache__/

@@ -1,0 +1,20 @@
+{
+  "name": "the-tarbell-news",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Tarbell News with a local-only editorial news desk",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "admin": "node scripts/admin-server.mjs",
+    "fetch-feeds": "node scripts/fetch-feeds.mjs",
+    "start": "node scripts/admin-server.mjs --read-only --port 3000",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "rss-parser": "^3.13.0"
+  }
+}
