@@ -14,7 +14,9 @@
     "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
+    "@mozilla/readability": "^0.6.0",
     "express": "^5.1.0",
+    "jsdom": "^26.1.0",
     "rss-parser": "^3.13.0"
   }
 }

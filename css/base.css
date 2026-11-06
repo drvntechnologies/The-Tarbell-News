@@ -213,3 +213,22 @@ p {
   height: 100%;
   object-fit: cover;
 }
+
+/* Imported articles retain a visible publisher credit and fallback notice. */
+figure.story-media {
+  margin: 1.5rem 0;
+}
+.external-source {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-top: 2px solid currentColor;
+  font-family: var(--font-sans);
+}
+.external-source a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.import-notice {
+  border-left: 3px solid #b7791f;
+  padding-left: 1rem;
+}

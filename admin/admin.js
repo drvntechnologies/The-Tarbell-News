@@ -6,7 +6,7 @@
   const validUrl = value => { try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
   const state = { items: [], regions: [], region: 'all', selected: new Set(), drafts: new Map(), current: null, token: null, readOnly: false, busy: false, pending: [] };
   const categories = ['General', 'Politics', 'Business', 'World', 'Opinion', 'Sports'];
-  const defaults = [['peru', 'National Peru'], ['us', 'National US'], ['lima', 'Lima, PE'], ['des-moines', 'Des Moines, IA'], ['chimbote', 'Chimbote, PE']];
+  const defaults = [['peru', 'National Peru'], ['us', 'National US'], ['lima', 'Lima, PE'], ['des-moines', 'Des Moines, IA'], ['chimbote', 'Chimbote, PE'], ['iowa-politics', 'Iowa Politics']];
   const time = value => value && Number.isFinite(Date.parse(value)) ? new Date(value).toLocaleString('en-US', { timeZone: 'America/Lima', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }) + ' (Lima)' : 'Time not provided';
   function status(message, error = false) { $('status').textContent = message; $('status').classList.toggle('error', error); }
   function draft(item) {
@@ -52,13 +52,13 @@
     $('preview-region').textContent = item.regionLabel;
     $('preview-section').textContent = options.section;
     $('preview-headline').textContent = options.title;
-    $('preview-dek').textContent = item.snippet || 'A headline from ' + item.source + ', selected for the ' + item.regionLabel + ' news desk. Read the original report for the full story.';
+    $('preview-dek').textContent = item.snippet || 'A headline from ' + item.source + ', selected for the ' + item.regionLabel + ' news desk. The full article will be imported when published, if the source permits access.';
     $('preview-source').href = validUrl(item.url);
     $('preview-add').textContent = item.published ? 'Already on site' : 'Add this story to site';
     updateSelection();
   }
   async function load(refresh = false) {
-    state.busy = true; updateSelection(); status(refresh ? 'Refreshing five regional RSS feeds…' : 'Loading the news wire…');
+    state.busy = true; updateSelection(); status(refresh ? 'Refreshing six regional and topic RSS feeds…' : 'Loading the news wire…');
     try {
       const response = await fetch('/api/feeds' + (refresh ? '?refresh=1' : ''), { cache: 'no-store' });
       if (!response.ok) throw new Error('News wire returned HTTP ' + response.status + '. Check the local server and retry.');
@@ -87,13 +87,19 @@
     $('confirm-dialog').showModal();
   }
   async function publish() {
-    state.busy = true; render(); status('Publishing approved stories to local files…');
+    state.busy = true; render(); status('Importing article text and available photos from sources, then publishing locally…');
     try {
       const response = await fetch('/api/publish', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Token': state.token }, body: JSON.stringify({ selections: state.pending }) });
       const result = await response.json(); if (!response.ok) throw new Error(result.error || 'Publishing failed');
       for (const selection of state.pending) state.selected.delete(selection.id);
       await load(false);
-      status(result.published.length + (result.published.length === 1 ? ' story added to your local site.' : ' stories added to your local site.') + (result.skipped.length ? ' ' + result.skipped.length + ' duplicate(s) skipped.' : '') + ' GitHub is unchanged.');
+      const warnings = result.warnings || [];
+      status(result.published.length + (result.published.length === 1 ? ' story imported onto your local site with source credit.' : ' stories imported onto your local site with source credit.') + (result.skipped.length ? ' ' + result.skipped.length + ' duplicate(s) skipped.' : '') + ' GitHub is unchanged.' + (warnings.length ? ' ' + warnings.length + ' import warning(s):' : ''), warnings.length > 0);
+      if (warnings.length) {
+        const list = document.createElement('ul');
+        for (const warning of warnings) { const li = document.createElement('li'); li.textContent = warning.title + ': ' + warning.message; list.append(li); }
+        $('status').append(list);
+      }
       const links = document.createElement('span'); links.className = 'result-links';
       for (const article of result.published) { const a = document.createElement('a'); a.href = article.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'View: ' + article.title; links.append(a); }
       $('status').append(links);

@@ -108,13 +108,15 @@ npm run admin
 
 Open **http://localhost:3001/admin/**. The same server serves the public site at http://localhost:3001/. Your usual read-only viewer on port 3000 can continue running alongside it as long as both serve this same directory.
 
-- **Region tabs:** All, National Peru, National US, Lima (PE), Des Moines (IA), Chimbote (PE).
+- **Region tabs:** All, National Peru, National US, Lima (PE), Des Moines (IA), Chimbote (PE), **Iowa Politics**.
 - Click **Refresh feeds** to fetch real RSS headlines server-side, avoiding browser CORS. The first admin visit fetches them if there is no cache. There is no polling, background schedule, or automatic publication.
 - Review the publisher, original timestamp (shown in **Lima / UTC−5**), available feed excerpt, region, and original-report link. Google News frequently provides **no summary**; the dashboard explicitly says so instead of inventing one.
-- **Preview & edit** lets you keep or rewrite the headline, choose a standard news category, and optionally mark the story Featured. Region defaults: Peru/Lima/Chimbote → **World**; US/Des Moines → **General**. Featured defaults to false; Sports is false unless you select the Sports category.
+- **Preview & edit** lets you keep or rewrite the headline, choose a standard news category, and optionally mark the story Featured. Region defaults: Peru/Lima/Chimbote → **World**; US/Des Moines → **General**; Iowa Politics → **Politics**. Featured defaults to false; Sports is false unless you select the Sports category.
 - Use **Add to site** for one item, or select checkboxes across regions and **Add selected to site** (up to 50 at once). A final confirmation lists the actual headlines and categories.
 - After approval the server appends new entries to `content/articles.json` (newest-first), writes real static pages at `articles/wire-<stable-id>.html`, and marks source links already published. Repeated publication and source URLs shared across regions are deduplicated. Original articles are never overwritten.
-- Refresh your public viewer to see the new stories. These are **attributed, curated external-news link briefings**, not original reporting or copies of publisher articles. They contain the headline, at most a short feed excerpt, and a prominent original-report link. No source article pages or publisher images are scraped; the preview and article use an illustrative gradient.
+- Refresh your public viewer to see the new stories. Publishing now **imports the readable source article onto The Tarbell News**, not an external redirect. The server extracts the headline, author when available, and body paragraphs using Mozilla Readability + JSDOM. Scripts, navigation, ads, and other page chrome are removed. Extracted text is stored in `content/articles.json` and escaped in a static article page. An admin-edited headline takes precedence. Every imported article ends with **“Read the original on [Source Name]”** linking back to the publisher. These remain source-publisher articles, not original Tarbell reporting.
+- If available, the `og:image` or lead article photo is downloaded to `images/imports/<article-id>.<ext>` and shown on the home/article pages, with any available caption/credit and the publisher name. Only JPEG, PNG, WebP, and GIF images are accepted; SVG and executable content are not. A missing/failed photo does not block text publication; the illustrative gradient remains.
+- **Republishing rights:** only import text and photos you own, have permission to republish, or that carry a suitable license. Attribution alone does not grant republication rights. This tool does not bypass paywalls, sign-ins, or publisher access restrictions.
 - Publication is **local only**. It does not commit, push to GitHub, or deploy. Back up/review changed article files and obtain approval before publishing repository changes elsewhere.
 
 ### Other commands
@@ -130,7 +132,7 @@ python3 -m unittest discover -s tests -v  # Existing sports/box-score regression
 
 ### Sources and failure behavior
 
-All five feeds are free, public **Google News RSS** feeds, with source publishers attributed item-by-item. Google News links may redirect through Google before reaching the original publisher. These are discovery queries, not verified regional coverage; admins should review relevance and accuracy before selecting anything. Peru-region feeds retain Spanish headlines; no automatic translation is claimed. Each refresh keeps up to 40 items per region and reports the fetch time. Google can change or throttle these undocumented RSS endpoints.
+All six feeds are free, public **Google News RSS** feeds, with source publishers attributed item-by-item. Google News links may redirect through Google before reaching the original publisher. These are discovery queries, not verified regional coverage; admins should review relevance and accuracy before selecting anything. Peru-region feeds retain Spanish headlines; no automatic translation is claimed. Each refresh keeps up to 40 items per region and reports the fetch time. Google can change or throttle these undocumented RSS endpoints.
 
 The exact feed definitions live in `scripts/news-feeds.mjs`:
 
@@ -139,19 +141,24 @@ The exact feed definitions live in `scripts/news-feeds.mjs`:
 - **Lima, PE:** <https://news.google.com/rss/search?q=Lima+Per%C3%BA+when%3A7d&hl=es-419&gl=PE&ceid=PE%3Aes-419>
 - **Des Moines, IA:** <https://news.google.com/rss/search?q=%22Des+Moines%22+Iowa+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen>
 - **Chimbote, PE:** <https://news.google.com/rss/search?q=Chimbote+Per%C3%BA+when%3A7d&hl=es-419&gl=PE&ceid=PE%3Aes-419>
+- **Iowa Politics:** <https://news.google.com/rss/search?q=Iowa+politics+when%3A7d&hl=en-US&gl=US&ceid=US%3Aen>
 
 A timeout, HTTP failure, oversized or malformed XML feed produces an **empty error state for that region**, not invented stories or silently retained stale results. Other regions continue working. The refresh action retries all regions. There is no API key or paid news subscription to configure.
+
+Article import is **best effort**: each source request has a 15-second total network timeout (including DNS, redirects, and body reading), a 2 MB HTML limit, and a maximum of five redirects. Photos have a 10-second timeout and 8 MB limit. Up to four stories are processed concurrently. Only public HTTP(S) destinations on standard ports are allowed; private/reserved IP addresses and every redirect target are checked, with validated DNS results pinned to the connection. JSDOM runs without scripts or external resource loading. No cookies or login credentials are used.
+
+Google News sometimes exposes only an opaque/JavaScript-only link. The importer follows ordinary redirects and public canonical/publisher links when available; it does not use private Google APIs. Google landing pages are never presented as full publisher articles. Blocked, paywalled, timed-out, unreadable, or unresolved articles fall back to the available RSS content/snippet, retain the original link, and are explicitly marked **RSS fallback** on the site. When the feed has no text, the page says so; no body is invented. The admin response and dashboard show per-story warnings, separately from photo failures. Refreshing an old five-region feed cache automatically adds the new Iowa Politics region.
 
 ### Local security / operating limits
 
 There is deliberately **no password gate**: this is a single-user localhost tool, not a hosted multi-user CMS. Both npm servers bind only to `127.0.0.1`, reject non-local Host headers, and the admin API uses an in-memory same-origin publishing token plus cross-origin checks. Server static roots do not expose `.git`, `node_modules`, or scripts. These controls reduce accidental access and browser cross-site requests; they are **not production authentication** and do not protect against someone using your computer. Do not expose this server through a tunnel, reverse proxy, LAN bind, or production hosting without implementing real authentication, HTTPS, authorization, and durable transactions.
 
-Article HTML is staged and exclusively created before an atomic article-index replacement. Ordinary write failures roll back the batch without overwriting existing pages; concurrent publishing is locked. Keep a backup / use Git history. A process or computer crash during publication can leave `.stage-*`, `.publish-lock`, or an orphan HTML page; after stopping all admin processes, review and remove only leftover staging/lock files before restarting. Confirm whether the article-index write completed before retrying a batch.
+Article HTML and downloaded photos are staged and exclusively created before an atomic article-index replacement. Ordinary write failures roll back the batch without overwriting existing pages; concurrent publishing is locked. Keep a backup / use Git history. A process or computer crash during publication can leave `.stage-*`, `.publish-lock`, or an orphan HTML/photo file; after stopping all admin processes, review and remove only leftover staging/lock files before restarting. Confirm whether the article-index write completed before retrying a batch.
 
 API endpoints (admin server only):
 - `GET /api/config` — categories, region definitions, and per-process publishing token.
 - `GET /api/feeds` — cached headlines plus already-published status; fetches once if absent.
 - `GET /api/feeds?refresh=1` — refresh all configured sources server-side.
-- `POST /api/publish` — JSON `{ "selections": [{ "id": "feed-item-id", "title": "Optional headline", "section": "World", "featured": false }] }`, with `X-Admin-Token` from config. Only IDs present in the local feed cache are accepted; arbitrary URLs/HTML/file paths cannot be published. `{ "ids": ["feed-item-id"] }` also works with defaults.
+- `POST /api/publish` — returns `published`, `skipped`, and `warnings` (per-story text/photo import problems). Accepts JSON `{ "selections": [{ "id": "feed-item-id", "title": "Optional headline", "section": "World", "featured": false }] }`, with `X-Admin-Token` from config. Only IDs present in the local feed cache are accepted; arbitrary URLs/HTML/file paths cannot be published. `{ "ids": ["feed-item-id"] }` also works with defaults.
 
-New files: `admin/` (dashboard), `scripts/news-feeds.mjs` (sources and parsing), `scripts/fetch-feeds.mjs` (CLI), `scripts/admin-server.mjs` (local viewer/API), `scripts/publish-news.mjs` (safe publishing/templates), and `tests/newsroom.test.mjs`.
+New files: `admin/` (dashboard), `scripts/news-feeds.mjs` (sources and parsing), `scripts/fetch-feeds.mjs` (CLI), `scripts/admin-server.mjs` (local viewer/API), `scripts/publish-news.mjs` (safe publishing/templates), `scripts/import-article.mjs` (text/photo extraction and public-only downloads), and `tests/newsroom.test.mjs`.

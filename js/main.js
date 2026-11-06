@@ -66,7 +66,7 @@
     const isImage = /^(images\/|https?:\/\/|\/)/i.test(image);
     const nested = /\/(sports|articles)(\/|$)/.test(window.location.pathname);
     const src = image.startsWith("images/") && nested ? "../" + image : image;
-    const caption = opts.caption !== false ? (article.imageCaption || article.section || "") : "";
+    const caption = opts.caption !== false ? (article.imageCaption || article.section || "") + (article.imageCredit ? " · Credit: " + article.imageCredit : "") + (article.imageSourceUrl ? " · Source: " + article.source : "") : "";
     const media = isImage
       ? '<img class="story-media__img" src="' + escapeAttr(src) + '" alt="' + escapeAttr(article.imageCaption || article.title) + '">'
       : '<div class="story-media__gradient ' + gradientClass(image) + '"></div>';
@@ -480,6 +480,7 @@
         mediaBlock(article, { modifier: "wide" }) +
         "</div>" +
         '<div class="espn-article__body">' +
+        (article.importStatus === 'rss-fallback' ? '<p class="import-notice"><strong>RSS fallback:</strong> The full article could not be imported. Only available feed content is shown.</p>' : '') +
         article.body
           .map(function (p, index) {
             return "<p>" + escapeHtml(p) + "</p>" + (index === 1 ? boxScoreBlock(article, false) : "");
@@ -513,6 +514,7 @@
         mediaBlock(article, { modifier: "wide" }) +
         "</div>" +
         '<div class="cnn-article__body">' +
+        (article.importStatus === 'rss-fallback' ? '<p class="import-notice"><strong>RSS fallback:</strong> The full article could not be imported. Only available feed content is shown.</p>' : '') +
         article.body
           .map(function (p) {
             return "<p>" + escapeHtml(p) + "</p>";
@@ -546,8 +548,8 @@
 
   function externalSourceBlock(article) {
     if (!article.externalNews || !/^https?:\/\//i.test(article.sourceUrl || "")) return "";
-    return '<p class="external-source"><strong>Original source: ' + escapeHtml(article.source) + '</strong></p>' +
-      '<p><a href="' + escapeAttr(article.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Read the original report ↗</a></p>';
+    return '<aside class="external-source" aria-label="Source attribution"><p><strong>Original source: ' + escapeHtml(article.source) + '</strong></p>' +
+      '<p><a href="' + escapeAttr(article.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Read the original on ' + escapeHtml(article.source) + ' ↗</a></p></aside>';
   }
 
   async function boot() {

@@ -5,7 +5,7 @@ import path from 'node:path';
 import { CATEGORIES, REGIONS, readJson, refreshFeeds } from './news-feeds.mjs';
 import { isPublished, publishSelected } from './publish-news.mjs';
 
-export function createApp(root, { readOnly = false, refresh = refreshFeeds } = {}) {
+export function createApp(root, { readOnly = false, refresh = refreshFeeds, importer, downloadImage } = {}) {
   const app = express(); const token = randomBytes(32).toString('hex');
   let refreshing;
   app.disable('x-powered-by');
@@ -25,7 +25,7 @@ export function createApp(root, { readOnly = false, refresh = refreshFeeds } = {
   app.get('/api/config', (req, res) => res.json({ token, categories: CATEGORIES, regions: REGIONS }));
   app.get('/api/feeds', async (req, res) => {
     let feeds = await readJson(path.join(root, 'content/feeds.json'), null);
-    if (!feeds || req.query.refresh === '1') {
+    if (!feeds || req.query.refresh === '1' || REGIONS.some(region => !feeds.regions?.some(cached => cached.id === region.id))) {
       refreshing ??= refresh(root).finally(() => { refreshing = null; });
       feeds = await refreshing;
     }
@@ -37,7 +37,7 @@ export function createApp(root, { readOnly = false, refresh = refreshFeeds } = {
     if (!req.is('application/json')) return res.status(415).json({ error: 'JSON body required' });
     try {
       const selections = req.body?.selections ?? req.body?.ids?.map(id => ({ id }));
-      res.json(await publishSelected(root, selections));
+      res.json(await publishSelected(root, selections, { importer, downloadImage }));
     } catch (error) { res.status(400).json({ error: error.code === 'EEXIST' ? 'An article file already exists. No existing files were overwritten.' : error.message }); }
   });
   // Explicit public roots: never expose .git, scripts, node_modules, or lock files.

@@ -11,6 +11,7 @@ export const REGIONS = [
   { id: 'lima', label: 'Lima, PE', section: 'World', url: search('Lima Perú when:7d') },
   { id: 'des-moines', label: 'Des Moines, IA', section: 'General', url: search('"Des Moines" Iowa when:7d', false) },
   { id: 'chimbote', label: 'Chimbote, PE', section: 'World', url: search('Chimbote Perú when:7d') },
+  { id: 'iowa-politics', label: 'Iowa Politics', section: 'Politics', url: search('Iowa politics when:7d', false) },
 ];
 export const parser = new Parser({ customFields: { item: [['source', 'sourceNode', { keepArray: false }]] } });
 export function plain(value, limit = 500) {
@@ -37,7 +38,7 @@ export async function fetchRegion(region, fetcher = fetch) {
   try {
     const response = await fetcher(region.url, { signal: AbortSignal.timeout(15000), headers: { 'User-Agent': 'TheTarbellNews/1.0 (local RSS reader)', Accept: 'application/rss+xml, application/xml, text/xml' } });
     if (!response.ok) throw new Error('RSS request returned HTTP ' + response.status);
-    // Bound untrusted RSS size before parsing. No outlet article pages are fetched.
+    // Bound untrusted RSS size before parsing. Article pages are fetched only when publishing.
     let xml = ''; let size = 0;
     const decoder = new TextDecoder();
     for await (const chunk of response.body) {
@@ -59,11 +60,13 @@ export async function fetchRegion(region, fetcher = fetch) {
       // Google News descriptions usually repeat the headline rather than supply a summary.
       const description = plain(item.contentSnippet || item.summary || '', 280);
       const snippet = description === title || description === headline + ' ' + source ? '' : description;
+      // Keep available RSS article content for an honest fallback if the outlet cannot be read.
+      const content = String(item['content:encoded'] || item.content || item.summary || '').slice(0, 100_000);
       const date = item.isoDate || item.pubDate;
       return [{ id: region.id + '-' + createHash('sha256').update(canonicalUrl(url)).digest('hex').slice(0, 20), title: headline, source,
         sourceUrl: safeUrl(rawSource?.$?.url), region: region.id, regionLabel: region.label, section: region.section,
         publishedAt: date && Number.isFinite(Date.parse(date)) ? new Date(date).toISOString() : null,
-        snippet, url }];
+        snippet, content, url }];
     }).slice(0, 40);
     return { ...region, status: 'ok', error: null, count: items.length, items };
   } catch (error) {
