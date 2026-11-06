@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sports — The Tarbell News</title>
-  <meta name="description" content="Family League, weekend games, and household championships — The Tarbell News Sports desk.">
+  <meta name="description" content="Peruvian Pichangas (Jesús María), Family League, weekend games, and match recaps — The Tarbell News Sports desk.">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/espn.css">
 </head>
@@ -23,22 +23,29 @@
       <div class="container espn-masthead__inner">
         <a class="espn-logo" href="index.html">
           Tarbell Sports
-          <span class="espn-logo__sub">Family League · Weekend Games · Recap</span>
+          <span class="espn-logo__sub">Pichangas · Family League · Weekend Games</span>
         </a>
         <button class="espn-nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="espn-nav">Menu</button>
         <nav class="espn-nav" id="espn-nav" data-nav-list aria-label="Sports sections">
           <a href="index.html" aria-current="page">Home</a>
-          <a href="#family">Family League</a>
-          <a href="#weekend">Weekend Games</a>
-          <a href="#recap">Recap</a>
+          <a href="#pichangas" data-filter-link="Peruvian Pichangas (Jesús María)">Pichangas</a>
+          <a href="#family" data-filter-link="Family League">Family League</a>
+          <a href="#weekend" data-filter-link="Weekend Games">Weekend Games</a>
+          <a href="#recap" data-filter-link="Recap">Recap</a>
           <a href="../index.html">Main News</a>
         </nav>
       </div>
     </div>
 
-    <div class="espn-scoreboard" aria-label="Sample scoreboard">
+    <div class="espn-scoreboard" aria-label="Latest match results and sample scores">
       <div class="container">
         <div class="espn-scoreboard__track">
+          <a class="espn-score espn-score--lead" href="../articles/pichanga-local-callao-jesus-maria.html" aria-label="Peruvian Pichangas (Jesús María): Team Local 8, Team Callao 6, final. Read recap.">
+            <div class="espn-score__league">Peruvian Pichangas (Jesús María)</div>
+            <div class="espn-score__row"><span>Team Local</span><span>8</span></div>
+            <div class="espn-score__row espn-score__row--muted"><span>Team Callao</span><span>6</span></div>
+            <div class="espn-score__status espn-score__status--final">FINAL · HT 5–2</div>
+          </a>
           <div class="espn-score">
             <div class="espn-score__league">Family League</div>
             <div class="espn-score__row"><span>Cousins Utd</span><span>21</span></div>
@@ -78,11 +85,12 @@
     <div class="container">
       <p id="load-error" hidden style="color:#f88"></p>
 
-      <div class="espn-chips" role="tablist" aria-label="Filter by category">
-        <a href="#" class="espn-chip is-active" data-chip="all">All</a>
-        <a href="#family" class="espn-chip" data-chip="Family League" id="family">Family League</a>
-        <a href="#weekend" class="espn-chip" data-chip="Weekend Games" id="weekend">Weekend Games</a>
-        <a href="#recap" class="espn-chip" data-chip="Recap" id="recap">Recap</a>
+      <div class="espn-chips" role="group" aria-label="Filter by league or category">
+        <a href="#all" class="espn-chip is-active" data-chip="all" aria-pressed="true" role="button">All</a>
+        <a href="#pichangas" class="espn-chip" data-chip="Peruvian Pichangas (Jesús María)" id="pichangas" aria-pressed="false" role="button">Peruvian Pichangas (Jesús María)</a>
+        <a href="#family" class="espn-chip" data-chip="Family League" id="family" aria-pressed="false" role="button">Family League</a>
+        <a href="#weekend" class="espn-chip" data-chip="Weekend Games" id="weekend" aria-pressed="false" role="button">Weekend Games</a>
+        <a href="#recap" class="espn-chip" data-chip="Recap" id="recap" aria-pressed="false" role="button">Recap</a>
       </div>
 
       <p class="espn-section-label" style="margin-top:1.25rem">Top headlines</p>
@@ -100,7 +108,7 @@
 
   <footer class="site-footer espn-footer">
     <div class="container site-footer__inner">
-      <p>© 2026 The Tarbell News Sports. Household athletics coverage. Not affiliated with any sports network.</p>
+      <p>© 2026 The Tarbell News Sports. Pichangas and household athletics coverage. Not affiliated with any sports network.</p>
       <p><a href="../index.html">Main newsroom</a></p>
     </div>
   </footer>

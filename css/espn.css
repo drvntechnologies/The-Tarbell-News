@@ -446,3 +446,71 @@ body.theme-espn {
 .espn-footer a {
   color: #aaa;
 }
+
+
+/* Match box score: the PNG and semantic tables share content/articles.json. */
+.espn-score--lead {
+  border-top: 3px solid var(--espn-red);
+  background: #141414;
+  text-decoration: none;
+}
+.espn-score--lead:hover { background: #252525; text-decoration: none; }
+.espn-card[hidden] { display: none; }
+.espn-chip:focus-visible, .espn-score--lead:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.box-score {
+  background: #0a0a0a;
+  border: 1px solid var(--espn-border);
+  border-top: 4px solid var(--espn-red);
+  margin: 1.75rem 0;
+  color: #fff;
+}
+.box-score__figure { margin: 0; }
+.box-score__image { display: block; width: 100%; height: auto; }
+.box-score__figure figcaption {
+  padding: 0.85rem 1rem;
+  color: #bbb;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-top: 1px solid var(--espn-border);
+}
+.box-score__figure a { color: #fff; text-decoration: underline; }
+.box-score__details { padding: 0.85rem 1rem; border-top: 1px solid var(--espn-border); }
+.box-score__details summary { cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+.box-score__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+  margin: 1rem 0;
+}
+.box-score__table caption { text-align: left; font-weight: 700; color: #ccc; margin-bottom: 0.5rem; }
+.box-score__table th, .box-score__table td {
+  border-bottom: 1px solid var(--espn-border);
+  padding: 0.65rem 0.4rem;
+  text-align: center;
+}
+.box-score__table th:first-child { text-align: left; }
+.box-score__table thead { background: #222; }
+.box-score__notes { font-size: 0.8rem; color: #bbb; line-height: 1.6; }
+.box-score--compact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.7rem;
+  border: 0;
+  border-bottom: 1px solid var(--espn-border);
+  font-size: 0.8rem;
+}
+.box-score__status {
+  background: var(--espn-red);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 0.2rem 0.35rem;
+  letter-spacing: 0.06em;
+}

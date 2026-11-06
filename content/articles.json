@@ -1,5 +1,59 @@
 [
   {
+    "id": "pichanga-local-callao-jesus-maria",
+    "title": "Pichanga Power: Tarbell’s 2 Goals, 3 Assists Lift Team Local Past Callao 8–6",
+    "section": "Sports",
+    "league": "Peruvian Pichangas (Jesús María)",
+    "dek": "A midfield-to-striker switch unlocks a stellar night in Jesús María: Cameron Tarbell delivers two goals, three assists and five shots on goal, but a second knee injury leaves his next appearance uncertain.",
+    "byline": "Tarbell Sports Desk",
+    "date": "2026-11-05T22:30:00-05:00",
+    "body": [
+      "JESÚS MARÍA, LIMA — The left knee was already hurting. The production showed up anyway. Cameron Tarbell scored twice, supplied three assists and put five shots on goal Thursday night as Team Local beat Team Callao 8–6 in Peruvian Pichangas (Jesús María), turning an injury-clouded return into a standout attacking performance.",
+      "Team Local carried a 5–2 lead into halftime and added three more goals after the break. Callao scored four in the second half, outscoring Local in that period but falling two goals short in the final tally. The box score captures both halves of the story: a strong first-half cushion for Local, followed by a tighter finish as Callao cut into the margin.",
+      "Tarbell’s own line — two goals, three assists, five shots on goal — reflected a role that moved between midfield and striker rather than staying fixed in one position. He was still somewhat sluggish with the prior left-knee injury, but the flexibility gave him ways to influence the game as both a finisher and a provider. His five direct goal contributions accounted for more than half of Local’s eight goals.",
+      "There could have been more assists. Tarbell created several additional opportunities that teammates could not finish, with shots either failing to find the net or going off target. Those near-connections do not go into his assist total, but they add context to a night in which his passing repeatedly put Local in position to threaten.",
+      "“It felt like one of those games where everything clicked and I felt like I had control. Not often I’ve gotten that feeling. I figured tonight would just be more of the normal games but the team wanted me to play flex between midfield and striker spots which worked out well,” Tarbell said.",
+      "The night also brought a fresh injury concern. Early in the second half, a double-team sent Tarbell to the turf, hurting his right knee while drawing a foul. He had entered the match with his left knee still injured. The collision left him dealing with concerns in both knees rather than just the injury he brought into the game.",
+      "His influence extended beyond the attack. During one defensive stretch of roughly a minute, Tarbell broke up play three times through interceptions and knocking the ball out of bounds. He kept Callao working along the sideline and denied access to the center of the field — a concentrated spell of defensive disruption to go with the scoring and chance creation.",
+      "For Team Local, the result is settled: an 8–6 win in Jesús María. Tarbell’s next appearance is not. With the earlier left-knee injury and the new right-knee concern, it remains unknown whether he will play in the La Molina league later this week or when he will return to the field. The performance delivered a clear answer about his impact on this match, but no certainty about the next one."
+    ],
+    "image": "images/campo-de-marte.jpg",
+    "imageCaption": "Campo de Marte, Lima — the setting for the Jesús María pickup-soccer coverage. File photo; not a photograph of this match.",
+    "boxScoreImage": "images/box-score-local-callao.png",
+    "boxScore": {
+      "status": "FINAL",
+      "teams": [
+        {
+          "name": "Team Local",
+          "halves": [
+            5,
+            3
+          ],
+          "final": 8
+        },
+        {
+          "name": "Team Callao",
+          "halves": [
+            2,
+            4
+          ],
+          "final": 6
+        }
+      ],
+      "player": {
+        "name": "Cameron Tarbell",
+        "team": "Team Local",
+        "goals": 2,
+        "assists": 3,
+        "shotsOnGoal": 5,
+        "position": "Flex MF/ST",
+        "injuryNote": "L knee: prior injury / R knee: 2H foul"
+      }
+    },
+    "featured": true,
+    "sports": true
+  },
+  {
     "id": "drvn-media-q4-surge",
     "title": "DRVN Media Eyes Strongest Quarter of the Year After AI-First Shift",
     "section": "Business of Living",
@@ -39,7 +93,8 @@
     "image": "images/campo-de-marte.jpg",
     "imageCaption": "Campo de Marte, Lima — site of tonight’s 9 p.m. pickup kickoff.",
     "featured": true,
-    "sports": true
+    "sports": true,
+    "league": "Peruvian Pichangas (Jesús María)"
   },
   {
     "id": "morning-coffee-summit",

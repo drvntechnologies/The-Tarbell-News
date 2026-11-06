@@ -240,11 +240,46 @@
   }
 
   function sportsCategory(article) {
+    if (article.league) return article.league;
     const t = (article.title || "").toLowerCase();
     if (t.indexOf("family league") !== -1) return "Family League";
     if (t.indexOf("weekend games") !== -1) return "Weekend Games";
     if (t.indexOf("recap") !== -1) return "Recap";
     return "Sports";
+  }
+
+  function boxScoreBlock(article, compact) {
+    const score = article.boxScore;
+    if (!score) return "";
+    if (compact) {
+      return '<div class="box-score box-score--compact" aria-label="Match result">' +
+        '<span class="box-score__status">' + escapeHtml(score.status) + '</span>' +
+        score.teams.map(function (team) {
+          return '<span>' + escapeHtml(team.name) + ' <strong>' + escapeHtml(team.final) + '</strong></span>';
+        }).join('<span aria-hidden="true"> / </span>') + '</div>';
+    }
+    const player = score.player;
+    const nested = /\/(sports|articles)(\/|$)/.test(window.location.pathname);
+    const image = (nested ? "../" : "") + article.boxScoreImage;
+    return '<section class="box-score" aria-label="Match box score">' +
+      '<figure class="box-score__figure"><img class="box-score__image" src="' + escapeAttr(image) +
+      '" alt="Team Local 8, Team Callao 6, final. Line score and Cameron Tarbell statistics are available in the tables below.">' +
+      '<figcaption>Peruvian Pichangas (Jesús María) · Nov. 5, 2026 (Lima). Match result and reported player stats; second-half goals calculated from halftime and final scores. ' +
+      '<a href="' + escapeAttr(image) + '" download>Save box score (PNG)</a></figcaption></figure>' +
+      '<details class="box-score__details"><summary>Line score &amp; player stats (text tables)</summary>' +
+      '<table class="box-score__table"><caption>Team line score · ' + escapeHtml(score.status) + '</caption>' +
+      '<thead><tr><th scope="col">Team</th><th scope="col">1H</th><th scope="col">2H</th><th scope="col">F</th></tr></thead><tbody>' +
+      score.teams.map(function (team) {
+        return '<tr><th scope="row">' + escapeHtml(team.name) + '</th><td>' + escapeHtml(team.halves[0]) +
+          '</td><td>' + escapeHtml(team.halves[1]) + '</td><td><strong>' + escapeHtml(team.final) + '</strong></td></tr>';
+      }).join('') + '</tbody></table>' +
+      '<table class="box-score__table"><caption>Team Local · Player stats</caption>' +
+      '<thead><tr><th scope="col">Player</th><th scope="col"><abbr title="Goals">G</abbr></th>' +
+      '<th scope="col"><abbr title="Assists">A</abbr></th><th scope="col"><abbr title="Shots on goal">SOG</abbr></th></tr></thead>' +
+      '<tbody><tr><th scope="row">' + escapeHtml(player.name) + '</th><td>' + escapeHtml(player.goals) +
+      '</td><td>' + escapeHtml(player.assists) + '</td><td>' + escapeHtml(player.shotsOnGoal) + '</td></tr></tbody></table>' +
+      '<p class="box-score__notes">' + escapeHtml(player.position + ' · ' + player.injuryNote) +
+      '. MF = midfield; ST = striker; 2H = second half. No other individual player statistics reported.</p></details></section>';
   }
 
   function renderSports(articles) {
@@ -269,6 +304,7 @@
     if (primaryEl) {
       primaryEl.innerHTML =
         mediaBlock(primary, { modifier: "wide", caption: false }) +
+        boxScoreBlock(primary, true) +
         '<div class="espn-feature-card__body">' +
         '<p class="espn-card__kicker">' +
         escapeHtml(sportsCategory(primary)) +
@@ -323,6 +359,7 @@
             escapeAttr(sportsCategory(a)) +
             '">' +
             mediaBlock(a, { caption: false }) +
+            boxScoreBlock(a, true) +
             '<div class="espn-card__body">' +
             '<p class="espn-card__kicker">' +
             escapeHtml(sportsCategory(a)) +
@@ -351,23 +388,38 @@
     const cards = document.querySelectorAll("#espn-grid .espn-card");
     if (!chips.length) return;
 
+    function selectCategory(cat) {
+      chips.forEach(function (chip) {
+        const selected = chip.getAttribute("data-chip") === cat;
+        chip.classList.toggle("is-active", selected);
+        chip.setAttribute("aria-pressed", selected ? "true" : "false");
+      });
+      cards.forEach(function (card) {
+        card.hidden = cat !== "all" && card.getAttribute("data-category") !== cat;
+      });
+    }
+
     chips.forEach(function (chip) {
-      chip.addEventListener("click", function (e) {
-        e.preventDefault();
-        const cat = chip.getAttribute("data-chip");
-        chips.forEach(function (c) {
-          c.classList.toggle("is-active", c === chip);
-        });
-        cards.forEach(function (card) {
-          if (cat === "all") {
-            card.style.display = "";
-          } else {
-            card.style.display =
-              card.getAttribute("data-category") === cat ? "" : "none";
-          }
-        });
+      chip.addEventListener("click", function () {
+        selectCategory(chip.getAttribute("data-chip"));
+      });
+      chip.addEventListener("keydown", function (e) {
+        if (e.key === " ") { e.preventDefault(); chip.click(); }
       });
     });
+    document.querySelectorAll("[data-filter-link]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        selectCategory(link.getAttribute("data-filter-link"));
+      });
+    });
+    function selectFromHash() {
+      const chip = Array.from(chips).find(function (item) {
+        return item.getAttribute("href") === window.location.hash;
+      });
+      selectCategory(chip ? chip.getAttribute("data-chip") : "all");
+    }
+    window.addEventListener("hashchange", selectFromHash);
+    selectFromHash();
   }
 
   function renderArticlePage(articles) {
@@ -405,7 +457,7 @@
       root.className = "espn-article";
       root.innerHTML =
         '<p class="espn-card__kicker">' +
-        escapeHtml(article.section) +
+        escapeHtml(article.league || article.section) +
         "</p>" +
         '<h1 class="espn-article__title">' +
         escapeHtml(article.title) +
@@ -423,8 +475,8 @@
         "</div>" +
         '<div class="espn-article__body">' +
         article.body
-          .map(function (p) {
-            return "<p>" + escapeHtml(p) + "</p>";
+          .map(function (p, index) {
+            return "<p>" + escapeHtml(p) + "</p>" + (index === 1 ? boxScoreBlock(article, false) : "");
           })
           .join("") +
         "</div>" +
