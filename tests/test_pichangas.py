@@ -19,7 +19,7 @@ class PichangasContentTests(unittest.TestCase):
 
     def test_league_and_preview_assignment(self):
         league_stories = [a for a in self.articles if a.get('league') == LEAGUE]
-        self.assertEqual({a['id'] for a in league_stories}, {SLUG, 'campo-marte-tarbell-return'})
+        self.assertEqual({a['id'] for a in league_stories}, {SLUG, 'campo-marte-tarbell-return', 'pichanga-tarbell-lawn-tennis-preview'})
         self.assertTrue(self.story['sports'] and self.story['featured'])
         self.assertNotIn('La Molina', (ROOT / 'sports/index.html').read_text())
         self.assertIn('La Molina league later this week', self.story['body'][-1])

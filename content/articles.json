@@ -1,5 +1,57 @@
 [
   {
+    "id": "pichanga-tarbell-lawn-tennis-preview",
+    "title": "Coming Off a 2-Goal, 3-Assist Heater, Tarbell Returns Tonight at Lawn Tennis",
+    "section": "Sports",
+    "league": "Peruvian Pichangas (Jesús María)",
+    "dek": "The midfielder is back in Jesús María for another night of Pichangas after lifting Team Local past Callao 8–6 last week, with a Thursday outing alongside Melvin Marma and a declared interest in joining a formal league.",
+    "byline": "Tarbell Sports Desk",
+    "date": "2026-11-10T17:30:00-05:00",
+    "body": [
+      "JESÚS MARÍA, LIMA — Cameron Tarbell is back on the field tonight. The midfielder is scheduled to play at Lawn Tennis in Jesús María in another night of Peruvian Pichangas, arriving on the strength of a heater that turned last Thursday into a standout attacking performance.",
+      "Five days ago, Tarbell scored twice, supplied three assists and put five shots on goal as Team Local beat Team Callao 8–6. Local carried a 5–2 lead into halftime and added three more goals after the break. Callao scored four in the second half, outscoring Local in that period but falling two goals short. That box score is the measuring stick he carries into Lawn Tennis.",
+      "Tarbell’s own line — two goals, three assists, five shots on goal — came in a role that moved between midfield and striker rather than staying fixed in one position. Those five direct goal contributions accounted for more than half of Local’s eight goals. The same night left a medical question from the recap: he entered with a prior left-knee injury and hurt his right knee on a second-half foul. The update now is simpler. He is playing again tonight, listed at midfield.",
+      "That heater is also the backdrop for a longer-term decision. Tarbell has declared his intention to join a formal league, either 11-on-11 or short-sided, and he is open to talking with teams. The Pichangas circuit in Jesús María remains the immediate stage. The next step, he has made clear, is organized competition.",
+      "He will also play Thursday with Melvin Marma, another local. The last time Marma lined up with Tarbell, Marma scored two goals in his Jesús María debut at Campo de Marte — the most recent shared appearance before this week’s midweek-and-Thursday stretch.",
+      "First comes Lawn Tennis tonight. Then comes Thursday with Marma. And beyond the Pichangas calendar, Tarbell has put formal teams on notice that he is ready to listen."
+    ],
+    "image": "images/campo-de-marte.jpg",
+    "imageCaption": "Campo de Marte, Lima — a Jesús María venue in the Pichangas coverage. File photo; tonight’s match is at Lawn Tennis.",
+    "boxScoreImage": "images/box-score-local-callao.png",
+    "boxScore": {
+      "status": "LAST WEEK · FINAL",
+      "teams": [
+        {
+          "name": "Team Local",
+          "halves": [
+            5,
+            3
+          ],
+          "final": 8
+        },
+        {
+          "name": "Team Callao",
+          "halves": [
+            2,
+            4
+          ],
+          "final": 6
+        }
+      ],
+      "player": {
+        "name": "Cameron Tarbell",
+        "team": "Team Local",
+        "goals": 2,
+        "assists": 3,
+        "shotsOnGoal": 5,
+        "position": "Flex MF/ST",
+        "injuryNote": "L knee: prior injury / R knee: 2H foul"
+      }
+    },
+    "featured": true,
+    "sports": true
+  },
+  {
     "id": "pichanga-local-callao-jesus-maria",
     "title": "Pichanga Power: Tarbell’s 2 Goals, 3 Assists Lift Team Local Past Callao 8–6",
     "section": "Sports",
