@@ -1,5 +1,56 @@
 [
   {
+    "id": "pichanga-local-lawn-tennis-jesus-maria",
+    "title": "Local Storms Back From 7–5 Down, Beats Lawn Tennis 16–11",
+    "section": "Sports",
+    "league": "Peruvian Pichangas (Jesús María)",
+    "dek": "Cameron Tarbell scored twice, added an assist, put seven shots on goal and made three big defensive stops as Team Local outscored Lawn Tennis 11–4 in the second half at Lawn Tennis in Jesús María.",
+    "byline": "Tarbell Sports Desk",
+    "date": "2026-11-10T22:50:00-05:00",
+    "body": [
+      "JESÚS MARÍA, LIMA — Team Local had to come from behind. Team Lawn Tennis led 7–5 at halftime on Tuesday night at Lawn Tennis in Peruvian Pichangas (Jesús María). Local then outscored Lawn Tennis 11–4 in the second half and won 16–11.",
+      "That second-half swing turned a two-goal deficit into a five-goal victory. Local’s 11 goals after the break, against 4 for Lawn Tennis, are the numbers that take a 5–7 halftime line to a 16–11 final. The box score is the record of that comeback.",
+      "Midfielder Cameron Tarbell finished with two goals, one assist, seven shots on goal and three big defensive stops for Local. Those are the individual statistics reported from the match. No other player lines were recorded.",
+      "The result follows last week’s 8–6 win over Callao, when Tarbell had two goals, three assists and five shots on goal. A preview published earlier Tuesday had him returning to Lawn Tennis coming off that heater. The comeback is the night that preview pointed toward.",
+      "For Team Local, the result is settled: a 16–11 win at Lawn Tennis after trailing 7–5 at the break."
+    ],
+    "image": "images/box-score-local-lawn-tennis.png",
+    "imageCaption": "Team Local 16, Team Lawn Tennis 11 — Tuesday, Nov. 10, 2026, at Lawn Tennis in Jesús María. Line score and reported Cameron Tarbell statistics.",
+    "boxScoreImage": "images/box-score-local-lawn-tennis.png",
+    "boxScore": {
+      "status": "FINAL",
+      "teams": [
+        {
+          "name": "Team Local",
+          "halves": [
+            5,
+            11
+          ],
+          "final": 16
+        },
+        {
+          "name": "Team Lawn Tennis",
+          "halves": [
+            7,
+            4
+          ],
+          "final": 11
+        }
+      ],
+      "player": {
+        "name": "Cameron Tarbell",
+        "team": "Team Local",
+        "goals": 2,
+        "assists": 1,
+        "shotsOnGoal": 7,
+        "defensiveStops": 3,
+        "position": "MF"
+      }
+    },
+    "featured": true,
+    "sports": true
+  },
+  {
     "id": "pichanga-tarbell-lawn-tennis-preview",
     "title": "Coming Off a 2-Goal, 3-Assist Heater, Tarbell Returns Tonight at Lawn Tennis",
     "section": "Sports",
