@@ -1,0 +1,48 @@
+{
+  "player": {
+    "name": "Cameron Tarbell",
+    "position": "Midfielder",
+    "team": "Local",
+    "league": "Peruvian Pichangas (Jesús María)"
+  },
+  "games": [
+    {
+      "id": "pichanga-local-lawn-tennis-jesus-maria",
+      "date": "2026-11-10",
+      "league": "Peruvian Pichangas (Jesús María)",
+      "venue": "Lawn Tennis",
+      "opponent": "Team Lawn Tennis",
+      "team": "Team Local",
+      "result": "W",
+      "scoreFor": 16,
+      "scoreAgainst": 11,
+      "halftimeFor": 5,
+      "halftimeAgainst": 7,
+      "goals": 2,
+      "assists": 1,
+      "shotsOnGoal": 7,
+      "defensiveStops": 3,
+      "notes": "Comeback win after trailing 7–5 at halftime. Listed at midfield.",
+      "article": "articles/pichanga-local-lawn-tennis-jesus-maria.html"
+    },
+    {
+      "id": "pichanga-local-callao-jesus-maria",
+      "date": "2026-11-05",
+      "league": "Peruvian Pichangas (Jesús María)",
+      "venue": null,
+      "opponent": "Team Callao",
+      "team": "Team Local",
+      "result": "W",
+      "scoreFor": 8,
+      "scoreAgainst": 6,
+      "halftimeFor": 5,
+      "halftimeAgainst": 2,
+      "goals": 2,
+      "assists": 3,
+      "shotsOnGoal": 5,
+      "defensiveStops": null,
+      "notes": "Flex midfield/striker. Entered with a prior left-knee injury; right knee hurt on a second-half foul. Broke up play three times in one defensive stretch (interceptions and knocking the ball out of bounds); that spell is noted here and is not recorded as a defensive-stops total.",
+      "article": "articles/pichanga-local-callao-jesus-maria.html"
+    }
+  ]
+}

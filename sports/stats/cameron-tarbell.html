@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cameron Tarbell Stats — The Tarbell News</title>
+  <meta name="description" content="Running stat line for Cameron Tarbell in Peruvian Pichangas (Jesús María): season totals, per-game averages, and a game log drawn from published recaps.">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/espn.css">
+  <style>
+    .player-header { margin: 1.5rem 0 1.25rem; }
+    .player-header h1 { margin: 0 0 0.35rem; font-size: 2rem; line-height: 1.15; }
+    .player-header__meta { color: #bcbcbc; margin: 0; }
+    .player-note { color: #ccc; max-width: 46rem; margin: 0 0 1.5rem; }
+    .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr)); gap: 0.75rem; margin: 0 0 1.75rem; }
+    .stat-chip { background: #171717; border: 1px solid #2a2a2a; border-top: 3px solid #a50000; padding: 0.7rem 0.6rem 0.8rem; text-align: center; }
+    .stat-chip__value { display: block; font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1.1; }
+    .stat-chip__label { display: block; margin-top: 0.3rem; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: #bcbcbc; }
+    .stat-chip--avg .stat-chip__value { font-size: 1.35rem; }
+    .game-log { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1.5rem; }
+    .game-log caption { text-align: left; font-weight: 700; color: #ccc; margin-bottom: 0.5rem; }
+    .game-log th, .game-log td { padding: 0.55rem 0.6rem; border-bottom: 1px solid #2a2a2a; text-align: center; font-variant-numeric: tabular-nums; }
+    .game-log th:first-child, .game-log td:first-child,
+    .game-log th:nth-child(2), .game-log td:nth-child(2),
+    .game-log th.game-log__notes, .game-log td.game-log__notes { text-align: left; }
+    .game-log thead { background: #222; }
+    .game-log tbody tr:hover { background: #1a1a1a; }
+    .game-log__notes { font-size: 0.85rem; color: #bcbcbc; max-width: 18rem; }
+    .stats-footnote { color: #9a9a9a; font-size: 0.85rem; }
+    #stats-error { color: #f88; }
+    .game-log-wrap { overflow-x: auto; }
+  </style>
+</head>
+<body class="theme-espn">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="espn-topbar">
+      <div class="container espn-topbar__inner">
+        <span><a href="../index.html">← Tarbell Sports</a></span>
+        <span><a href="../../index.html">Main News</a></span>
+      </div>
+    </div>
+    <div class="espn-masthead">
+      <div class="container espn-masthead__inner">
+        <a class="espn-logo" href="../index.html">Tarbell Sports<span class="espn-logo__sub">Pichangas · Player Stats</span></a>
+        <nav class="espn-nav" aria-label="Sports sections">
+          <a href="../index.html#pichangas">Pichangas</a>
+          <a href="../index.html">All Sports</a>
+          <a href="cameron-tarbell.html" aria-current="page">Stats</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <header class="player-header">
+      <p class="espn-card__kicker"><a href="../index.html#pichangas">Peruvian Pichangas (Jesús María)</a> · Player Stats</p>
+      <h1>Cameron Tarbell</h1>
+      <p class="player-header__meta">Midfielder · Local / Peruvian Pichangas, Jesús María</p>
+    </header>
+
+    <p class="player-note">Tarbell has declared his intention to join a formal league, either 11-on-11 or short-sided, and is open to talking with teams. The figures below are compiled only from published recaps; unreported stats appear as — and are not counted as zeros.</p>
+
+    <p id="stats-error" hidden></p>
+
+    <p class="espn-section-label">Season totals</p>
+    <div class="stat-strip" id="season-totals" aria-live="polite">
+      <div class="stat-chip"><span class="stat-chip__value">—</span><span class="stat-chip__label">GP</span></div>
+      <div class="stat-chip"><span class="stat-chip__value">—</span><span class="stat-chip__label">G</span></div>
+      <div class="stat-chip"><span class="stat-chip__value">—</span><span class="stat-chip__label">A</span></div>
+      <div class="stat-chip"><span class="stat-chip__value">—</span><span class="stat-chip__label">G+A</span></div>
+      <div class="stat-chip"><span class="stat-chip__value">—</span><span class="stat-chip__label">SOG</span></div>
+      <div class="stat-chip"><span class="stat-chip__value">—</span><span class="stat-chip__label">Stops</span></div>
+    </div>
+
+    <p class="espn-section-label">Per-game averages</p>
+    <div class="stat-strip" id="season-averages" aria-live="polite">
+      <div class="stat-chip stat-chip--avg"><span class="stat-chip__value">—</span><span class="stat-chip__label">G</span></div>
+      <div class="stat-chip stat-chip--avg"><span class="stat-chip__value">—</span><span class="stat-chip__label">A</span></div>
+      <div class="stat-chip stat-chip--avg"><span class="stat-chip__value">—</span><span class="stat-chip__label">G+A</span></div>
+      <div class="stat-chip stat-chip--avg"><span class="stat-chip__value">—</span><span class="stat-chip__label">SOG</span></div>
+      <div class="stat-chip stat-chip--avg"><span class="stat-chip__value">—</span><span class="stat-chip__label">Stops</span></div>
+    </div>
+
+    <p class="espn-section-label">Game log</p>
+    <div class="game-log-wrap">
+      <table class="game-log" id="game-log">
+        <caption>Newest first. Links open the published recap for each game.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Opponent</th>
+            <th scope="col">Venue</th>
+            <th scope="col">Result</th>
+            <th scope="col">HT</th>
+            <th scope="col"><abbr title="Goals">G</abbr></th>
+            <th scope="col"><abbr title="Assists">A</abbr></th>
+            <th scope="col"><abbr title="Shots on goal">SOG</abbr></th>
+            <th scope="col"><abbr title="Big defensive stops">Stops</abbr></th>
+            <th scope="col" class="game-log__notes">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="10">Loading stat line…</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="stats-footnote">Averages use only games in which that statistic was reported. The Campo de Marte preview does not list a completed box score and is not in this log.</p>
+
+    <p><a class="espn-article__back" href="../index.html#pichangas">← More from Peruvian Pichangas (Jesús María)</a></p>
+  </main>
+  <footer class="site-footer espn-footer">
+    <div class="container site-footer__inner">
+      <p>© 2026 The Tarbell News Sports.</p>
+      <p><a href="../../index.html">Main newsroom</a></p>
+    </div>
+  </footer>
+  <script type="module" src="../../js/cameron-stats.js"></script>
+  <script type="module">
+    import { renderPlayerPage } from '../../js/cameron-stats.js';
+    renderPlayerPage({
+      dataUrl: '../../content/stats/cameron-tarbell.json',
+      articlePrefix: '../../'
+    });
+  </script>
+</body>
+</html>
